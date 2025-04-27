@@ -34,7 +34,7 @@ openssl s_client -connect localhost:4433 -tls1
 #### Get Flag with Legacy OpenSSL
 ```cmd
 cd C:\downgrade_ctf
-tools\OpenSSL-1.1.1\bin\openssl.exe s_client -connect localhost:4433 -tls1 -no_verify
+tools\OpenSSL-1.1.1\bin\openssl.exe s_client -connect localhost:4433 -tls1 
 ```
 *Flag format: `FLAG:{TLS_DOWNGRADE_MASTER_1337}`*
 
@@ -136,14 +136,7 @@ cd C:\downgrade_ctf\server
 ## 🧠 Explanation  
 - **Why TLS 1.0 is dangerous**: Vulnerable to BEAST, POODLE attacks  
 - **Modern protections**: OpenSSL 3.x+ actively blocks deprecated protocols  
-- **Real-world impact**: Legacy systems (IoT, old servers) remain vulnerable  
-
-## ⚠️ Troubleshooting  
-| Issue | Solution |
-|-------|----------|
-| Connection refused | Check `netstat -ano \| findstr 4433` |
-| Certificate errors | Use `-no_verify` flag in all commands |
-| Git problems | Upload files manually via GitHub UI |
+- **Real-world impact**: Legacy systems (IoT, old servers) remain vulnerable  |
 
 ## 📚 Resources  
 - [OpenSSL Docs](https://www.openssl.org/docs/)  
