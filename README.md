@@ -5,7 +5,7 @@
 # **TLS Downgrade Attack CTF Challenge**  
 **Objective**: Extract the flag by bypassing modern TLS protections using legacy tools.
 
-## 📦 Required Tools (Included in `/tools`)
+## 📦 Required Tools (Included in `repository`)
 1. **Legacy OpenSSL 1.1.1**  
    Location: `tools\OpenSSL-1.1.1\bin\openssl.exe`  
    (For TLS 1.0 connections)
