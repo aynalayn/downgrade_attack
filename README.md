@@ -45,13 +45,12 @@ downgrade_ctf/
 │   ├── OpenSSL-1.1.1/  # Legacy OpenSSL
 │   └── Python38/       # Python 3.8
 ├── server/             # Server code
-└── client/             # Attack instructions
 ```
 
 ## 💡 Key Points
 - Modern systems block TLS 1.0 (CVE-2011-3389)
 - Legacy tools bypass these protections
-- All executables run from local `tools` folder
+- All executables run from local `repository` folder
 
 ## ⚠️ Troubleshooting
 If commands fail:
@@ -75,11 +74,6 @@ Participants will:
 Here's a comprehensive **README.md** in English for your TLS Downgrade Attack CTF challenge:
 
 ---
-
-# **TLS Downgrade Attack CTF Challenge**  
-**Difficulty**: Intermediate  
-**Category**: Cryptography/Network Security  
-**Flag**: `FLAG:{TLS_DOWNGRADE_MASTER_1337}`  
 
 ## 📝 Challenge Description  
 This lab demonstrates a real-world TLS downgrade attack where modern systems block deprecated TLS 1.0, but legacy clients can still exploit servers supporting old protocols.  
@@ -114,21 +108,21 @@ cd C:\downgrade_ctf\server
 
 ### Step 1: Modern Client Test (TLS 1.3)  
 ```cmd
-"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" s_client -connect localhost:4433 -tls1_3 -no_verify
+"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" s_client -connect localhost:4433 -tls1_3 
 ```
 **Expected Output**:  
 `Server requires TLS 1.0 connection to get the flag`  
 
 ### Step 2: Attempt TLS 1.0 (Blocked)  
 ```cmd
-"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" s_client -connect localhost:4433 -tls1 -no_verify
+"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" s_client -connect localhost:4433 -tls1 
 ```
 **Expected Error**:  
 `no protocols available` (Modern OpenSSL blocks TLS 1.0)  
 
 ### Step 3: Successful Attack (Legacy Client)  
 ```cmd
-"C:\OpenSSL-1.1.1\bin\openssl.exe" s_client -connect localhost:4433 -tls1 -no_verify
+"C:\OpenSSL-1.1.1\bin\openssl.exe" s_client -connect localhost:4433 -tls1 
 ```
 **Flag**:  
 `Success! Your flag: FLAG:{TLS_DOWNGRADE_MASTER_1337}`  
